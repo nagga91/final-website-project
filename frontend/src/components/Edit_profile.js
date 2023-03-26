@@ -72,7 +72,7 @@ function Edit_profile() {
       <div className="col-md-2">
         <div className="text-center">
           <img
-            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+            src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
             className="avatar img-circle img-thumbnail"
             alt="avatar"
           />

@@ -50,9 +50,10 @@ function Training_int() {
   return (
     <div style={{width: '100%',minHeight: '100vh',backgroundImage:`url("https://cdn.wallpapersafari.com/9/57/PdJiN3.jpg")`,backgroundRepeat:'no-repeat',backgroundPosition:'center',backgroundSize:'cover'}}>
         <Navbar/>
+        
        <header className='header__container' style={{width: '100%',display: 'flex',alignItems: 'center',height: '10vh',backgroundColor: '#e0f2fe'}}>
                 <div className='header' style={{border: '1px solid #ddd',width: '100%',alignItems: 'center',padding: '10px 20px',display: 'flex',justifyContent: 'space-between',height: '100%',flex: '1'}}>
-                    <h3>Enter what's your job and start the demo interview</h3>
+                    <h3>Enter your job and start the demo interview</h3>
                     <div className='header__right' style={{display: 'flex',alignItems: 'center'}}>
                     <input type='text' placeholder='put your job' onChange={(e) => setValue(e.target.value)} ></input>
                         <button className='runBtn' style={{color:'#fff',backgroundColor:'#065f46',outline:'none',padding: '10px 5px',width: '100px',marginRight: '10px',cursor: 'pointer',border: 'none',borderRadius: '3px',boxShadow: '0 0 1px 1px #e0e0ea'}} onClick={handleSubmit}>
