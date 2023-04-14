@@ -59,3 +59,13 @@ exports.updateusers=async(req,res)=>{
         
     }
 }
+
+exports.getmanyuser = async (req, res) => {
+    const {data}=req.body
+    try {
+      const manyusers = await users.find({ _id: { $in: data } });
+      res.status(200).send({ msg: "many users", manyusers });
+    } catch (error) {
+      res.status(500).send({ msg: "couldn't get many users"});
+    }
+  }

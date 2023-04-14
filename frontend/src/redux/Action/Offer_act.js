@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GETOFFERS,MYOFFERS } from '../ActionType/OfferType'
+import { GETOFFERS,GETONE,MYOFFERS } from '../ActionType/OfferType'
 
 //all offers
 export const get_offers = () => async (dispatch) => {
@@ -52,6 +52,15 @@ export const my_offers = () => async (dispatch) => {
     try {
       await axios.delete(`/offer/deleteoffer/${id}`);
       dispatch(get_offers());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //get one offer
+  export const one_offer = (id) => async (dispatch) => {
+    try {
+      const res=await axios.get(`/offer/oneoffer/${id}`);
+      dispatch({type:GETONE,payload:res.data});
     } catch (error) {
       console.log(error);
     }

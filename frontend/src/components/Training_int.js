@@ -53,7 +53,7 @@ function Training_int() {
         
        <header className='header__container' style={{width: '100%',display: 'flex',alignItems: 'center',height: '10vh',backgroundColor: '#e0f2fe'}}>
                 <div className='header' style={{border: '1px solid #ddd',width: '100%',alignItems: 'center',padding: '10px 20px',display: 'flex',justifyContent: 'space-between',height: '100%',flex: '1'}}>
-                    <h3>Enter your job and start the demo interview</h3>
+                    <h3>Enter your job title and let's start the demo interview</h3>
                     <div className='header__right' style={{display: 'flex',alignItems: 'center'}}>
                     <input type='text' placeholder='put your job' onChange={(e) => setValue(e.target.value)} ></input>
                         <button className='runBtn' style={{color:'#fff',backgroundColor:'#065f46',outline:'none',padding: '10px 5px',width: '100px',marginRight: '10px',cursor: 'pointer',border: 'none',borderRadius: '3px',boxShadow: '0 0 1px 1px #e0e0ea'}} onClick={handleSubmit}>
@@ -62,17 +62,17 @@ function Training_int() {
                     </div>
                 </div>
         </header>
-
+<br/>
             <div className='code__container' style={{alignItems: 'flex-start',display: 'flex',width: '100%',height:'95vh'}}>
                
                 <div className='code'style={{width:'50vw'}}>
                  
-                <Editor
-                        height='70vh'
+                <textarea
+                        
                         className='editor'
-                        style={{width: '100%',padding:'10px 0px'}}
+                        style={{width: '100%',padding:'10px 0px',height:'300px',fontSize:'20px'}}
                         defaultValue=''
-                       value={value1}
+                       placeholder='answer the question here and send your answer'
                        onchange={(value)=>setValue1(value)}
                     />
                     <button className='runBtn' style={{color:'#fff',backgroundColor:'#065f46',outline:'none',padding: '10px 5px',width: '100px',marginRight: '10px',cursor: 'pointer',border: 'none',borderRadius: '3px',boxShadow: '0 0 1px 1px #e0e0ea'}} onClick={handleresponse}>
@@ -82,16 +82,13 @@ function Training_int() {
                 <div className='output' style={{width:'50vw'}}>
                 {loading ? (
                     <Loading />
-                ) : (<Editor
-                        height='70vh'
+                ) : (<textarea
+                        disabled
                         className='editor'
-                        style={{width: '100%',padding:'10px 0px'}}
-                        defaultLanguage='typescript'
+                        style={{width: '100%',padding:'10px 0px',height:'300px',color:'darkblue',fontSize:'20px'}}
+                        placeholder='press start and wait a moment...'
                         defaultValue=''
-                        options={{
-                            domReadOnly: true,
-                            readOnly: true,
-                        }}
+                       
                         value={output}
                         onChange={(value) => setOutput(value)}
                     />)}

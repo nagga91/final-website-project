@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FAIL, GET_CURRENT, LOG_IN, LOG_OUT, REGISTER } from '../ActionType/ActionType'
+import { FAIL, GET_CURRENT, GET_MANY, LOG_IN, LOG_OUT, REGISTER } from '../ActionType/ActionType'
 import { alert_error } from './ErrorAction'
 
 
@@ -61,6 +61,16 @@ export const update_user=(id,data)=>async(dispatch)=>{
         console.log(error)
     }
 }
+
+export const many_user= (data) => async (dispatch) => {
+    try {
+
+      const res=await axios.post('/user/manyusers',{data});
+      dispatch({type:GET_MANY,payload:res.data});
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const logout=(navigate)=>{
     navigate('/')

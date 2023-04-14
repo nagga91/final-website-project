@@ -112,13 +112,13 @@ function Profile_emp() {
        backgroundRepeat:'no-repeat',
        backgroundSize:'cover',
        height: 400,
-       marginTop: 58
+       borderRadius:'15px'
      }}
    >
      <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
-       <div className="d-flex justify-content-center align-items-center h-100">
-         <div className="text-light">
-           <h1 className="mb-3">Welcome to {user.name} page</h1>
+       <div className="d-flex justify-content-center align-items-center h-100" >
+         <div className="text-light" >
+           <h1 className="mb-3" style={{color:'teal'}}>Welcome to {user.name} page</h1>
            <h4 className="mb-3">{user.description}</h4>
          </div>
        </div>
@@ -181,16 +181,16 @@ function Profile_emp() {
       {/* Right */}
       <div>
         <a href={user.facebook} className="me-4 text-reset">
-        <i class="bi bi-facebook"></i>
+        <i class="bi bi-facebook" style={{color:'blue'}}></i>
         </a>
         <a href={user.twitter} className="me-4 text-reset">
-        <i class="bi bi-twitter"></i>
+        <i class="bi bi-twitter" style={{color:'cornflowerblue'}}></i>
         </a>
         <a href={user.instagram} className="me-4 text-reset">
-        <i class="bi bi-instagram"></i>
+        <i class="bi bi-instagram" style={{color:'coral'}}></i>
         </a>
         <a href={user.linkedin} className="me-4 text-reset">
-        <i class="bi bi-linkedin"></i>
+        <i class="bi bi-linkedin" style={{color:'#0072b1'}}></i>
         </a>
       </div>
       {/* Right */}
@@ -215,54 +215,12 @@ function Profile_emp() {
           {/* Grid column */}
           {/* Grid column */}
           <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-4">Products</h6>
-            <p>
-              <a href="#!" className="text-reset">
-                Angular
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                React
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                Vue
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                Laravel
-              </a>
-            </p>
+           
           </div>
           {/* Grid column */}
           {/* Grid column */}
           <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
-            <p>
-              <a href="#!" className="text-reset">
-                Pricing
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                Settings
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                Orders
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                Help
-              </a>
-            </p>
+           
           </div>
           {/* Grid column */}
           {/* Grid column */}

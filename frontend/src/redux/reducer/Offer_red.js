@@ -1,8 +1,9 @@
-import { GETOFFERS, MYOFFERS } from "../ActionType/OfferType";
+import { GETOFFERS, GETONE, MYOFFERS } from "../ActionType/OfferType";
 
 const initialState = {
     offers: [],
-    myoffers: []
+    myoffers: [],
+    offer:{}
   }
 
   const Offersreducer = (state = initialState, { type, payload }) => {
@@ -11,7 +12,8 @@ const initialState = {
         return { ...state, offers: payload.alloffer};
       case MYOFFERS:
         return { ...state, myoffers: payload };
-  
+      case GETONE:
+        return {...state,offer:payload.oneoffer}
       default:
         return state;
     }

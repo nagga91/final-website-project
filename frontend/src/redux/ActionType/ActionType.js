@@ -1,5 +1,6 @@
 export const LOG_IN="LOG_IN"
 export const REGISTER="REGISTER"
+export const GET_MANY="GET_MANY"
 export const GET_CURRENT="GET_CURRENT"
 export const LOG_OUT="LOG_OUT"
 export const FAIL="FAIL"

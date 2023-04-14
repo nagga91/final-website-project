@@ -1,7 +1,8 @@
-import { GET_CURRENT, LOG_IN, LOG_OUT, REGISTER } from "../ActionType/ActionType";
+import { GET_CURRENT, GET_MANY, LOG_IN, LOG_OUT, REGISTER } from "../ActionType/ActionType";
 
 const initialState = {
-user:{}
+user:{},
+manyusers:[]
 }
 
 const Reducer= (state = initialState, { type, payload }) => {
@@ -13,6 +14,9 @@ const Reducer= (state = initialState, { type, payload }) => {
         
     case GET_CURRENT :
         return {...state,user:payload.user}
+
+    case GET_MANY :
+        return {...state,manyusers:payload.manyusers}    
         
     case LOG_OUT:
       localStorage.removeItem("token")

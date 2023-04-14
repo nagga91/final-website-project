@@ -208,10 +208,10 @@ function Edit_profile() {
     </div>
   </div>
   <hr />
-  <Button variant="secondary" href='/profile'>
+  <Button variant="outline-secondary" href='/profile'>
             Close
           </Button>
-          <Button variant="primary" onClick={handleedit}>
+          <Button variant="outline-primary" onClick={handleedit}>
             Save Changes
           </Button>
           </>
@@ -360,10 +360,10 @@ function Edit_profile() {
     </div>
   </div>
   <hr />
-  <Button variant="secondary" href='/profile'>
+  <Button variant="outline-secondary" href='/profile'>
             Close
           </Button>
-          <Button variant="primary" onClick={handleedit}>
+          <Button variant="outline-primary" onClick={handleedit}>
             Save Changes
           </Button>
           </>

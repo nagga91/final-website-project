@@ -55,6 +55,7 @@ h6 span{
 }
 .full-height{
   min-height: 100vh;
+  
 }
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked){
@@ -331,4 +332,14 @@ h6 span{
 	height: 26px;
 	width: auto;
 	display: block;
+}
+
+#blaka {
+  box-shadow:
+  -50px -50px 0 -40px var(--red),
+  50px 50px 0 -40px var(--red);
+  display: grid;
+  place-items: center;
+  height: 20vh;
+  background-color: var(--bgColor);
 }
