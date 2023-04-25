@@ -16,21 +16,26 @@ function Interview() {
 
   useEffect(()=>{
   dispatch(getCurrent())
-  dispatch(one_offer(id))}
+  dispatch(one_offer(id))
+  
+}
   ,[dispatch])
   const user=useSelector((state)=>state.Reducer.user)
 const job=useSelector((state)=>state.Offersreducer.offer)
   console.log(job)
   console.log(user)
+
   const handleStartTest = () => {
     setShowTest(true);
     handle.enter();
+    dispatch(update_offer(job._id,{candidates:[...job.candidates,{candidat:user._id}]}))
   }
 
   const handleFullScreenChange = () => {
     if (!handle.active) {
       setShowTest(false);
   }
+  dispatch(one_offer(id))
   }
 
   return (

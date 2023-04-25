@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCurrent } from '../redux/Action/Action'
+import { one_user } from '../redux/Action/Action'
 import Navbar from './Navbar'
 import './Profile_emp.css'
 
 
-function Profile_emp() {
+function Go_to_profil() {
     const dispatch=useDispatch()
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
     useEffect(() => {
-      dispatch(getCurrent())
+      dispatch(one_user(id))
     }, [dispatch])
-    const user=useSelector((state)=>state.Reducer.user)
-
+    const user=useSelector((state)=>state.Reducer.userone)
+console.log(user)
   return (
     
     <div id='body'>
+     <Navbar/>   
      {(user.role==='Job searcher')?
       <>
-       <Navbar/>
        <br/>
        <br/>
        <div className="container_p">
@@ -32,7 +34,7 @@ function Profile_emp() {
            <span>{user.job}</span>{" "}
          </h2>
        </div>
-       <div className="contactInfo" >
+       <div className="contactInfo">
          <h3 className="title">Contact Info</h3>
          <ul style={{textAlign:'start',width:'100%'}}>
            <li>
@@ -100,10 +102,7 @@ function Profile_emp() {
 
      <div >                  
    <header>
-   {/* Navbar */}
-   <Navbar/>
-   {/* Navbar */}
-   {/* Background image */}
+   
    <div
      className="p-5 text-center bg-image"
      style={{
@@ -231,7 +230,8 @@ function Profile_emp() {
             <i class="bi bi-house-door-fill"></i> {user.adresse}
             </p>
             <p>
-            <i class="bi bi-envelope"></i> {user.email}
+            <i class="bi bi-envelope"></i>
+              {user.email}
             </p>
             <p>
             <i class="bi bi-telephone-fill"></i> {user.phone}
@@ -253,4 +253,4 @@ function Profile_emp() {
   )
 }
 
-export default Profile_emp
+export default Go_to_profil

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FAIL, GET_CURRENT, GET_MANY, LOG_IN, LOG_OUT, REGISTER } from '../ActionType/ActionType'
+import { FAIL, GETONE, GET_CURRENT, GET_MANY, LOG_IN, LOG_OUT, REGISTER } from '../ActionType/ActionType'
 import { alert_error } from './ErrorAction'
 
 
@@ -70,7 +70,16 @@ export const many_user= (data) => async (dispatch) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+
+  export const one_user = (id) => async (dispatch) => {
+    try {
+      const res=await axios.get(`/user/oneuser/${id}`);
+      dispatch({type:GETONE,payload:res.data});
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 export const logout=(navigate)=>{
     navigate('/')

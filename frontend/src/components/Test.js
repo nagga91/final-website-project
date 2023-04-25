@@ -28,17 +28,15 @@ function Test({test,idoffer,iduser,candidates}) {
         setTimeRemaining(test[currentQuestionIndex + 1].time * 60);
         setAnswer('');
       };
-    console.log(answer)
 
     const handlesubmit=()=>{
-      setAnswers(prevAnswers => [...prevAnswers, answer]);
+      setAnswers(prevAnswers => [...prevAnswers,answer]);
       dispatch(update_offer(idoffer,{candidates:[...candidates,{candidat:iduser,answers:[...answers,answer]}]}))
       if(document.fullscreenElement){
         document.exitFullscreen()
-        window.location.reload()
+      
       }
     }
-    console.log(answers)
 
       const formatTime = (timeInSeconds) => {
         const minutes = Math.floor(timeInSeconds / 60);

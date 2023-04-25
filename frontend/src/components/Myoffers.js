@@ -11,14 +11,17 @@ import Button from 'react-bootstrap/Button';
 import Add_offer from './Add_offer';
 import Update_offer from './Update_offer';
 import Table from './Table';
+import Badge from 'react-bootstrap/Badge';
 
  function Myoffers() {
+  const myoffers=useSelector((state)=>state.Offersreducer.myoffers)
     const dispatch=useDispatch()
+
  useEffect(() => {
     dispatch(my_offers())
   }, [dispatch])
 
-  const myoffers=useSelector((state)=>state.Offersreducer.myoffers)
+  
   console.log(myoffers)
   const [activeOfferIndex, setActiveOfferIndex] = useState(null);
 
@@ -27,7 +30,7 @@ import Table from './Table';
   };
 
   return (
-    <div style={{backgroundImage:`url("https://cdn.wallpapersafari.com/9/57/PdJiN3.jpg")`,backgroundRepeat:'no-repeat',backgroundPosition:'center',backgroundSize:'cover'}}>
+    <div style={{backgroundImage:`url("https://cdn.wallpapersafari.com/9/57/PdJiN3.jpg")`,backgroundRepeat:'no-repeat',backgroundPosition:'center',backgroundSize:'cover',minHeight:'100vh'}}>
       <Navbar/>
       <br/>
       <div style={{marginLeft:'10%',width: '80%',alignItems: 'center',height: '10%',backgroundColor: 'teal',borderRadius:'15px'}}>
@@ -60,7 +63,7 @@ import Table from './Table';
         </Card.Text>
         <div style={{display:'flex',justifyContent:'center'}}>
         <Update_offer offer={offer}/> 
-        <Button variant="outline-danger" onClick={()=>dispatch(delete_offer(offer._id))} style={{marginLeft:'20px'}}>Delete</Button>
+        <Button variant="outline-danger" onClick={()=>{dispatch(delete_offer(offer._id)); dispatch(my_offers())}} style={{marginLeft:'20px'}}>Delete</Button>
         </div>
 
         <Tab.Container 
@@ -75,7 +78,17 @@ import Table from './Table';
               <Nav.Link eventKey="first">Description</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="second">candidates</Nav.Link>
+              <Nav.Link eventKey="second">candidates <Badge bg="danger">
+                {(offer.withtest==='with test')?
+                offer.candidates.reduce((acc, e) => {
+                  if (e.answers.length > 0) {
+                    return acc + 1;
+                  } else {
+                    return acc;
+                  }
+                }, 0)
+                  :offer.candidates.length}
+                </Badge></Nav.Link>
             </Nav.Item>
           </Nav>
         </Col>
@@ -105,7 +118,7 @@ import Table from './Table';
         <tbody className="bg-white" >
          
             
-          {activeOfferIndex === index&&(<Table array={offer.candidates}/>)}
+          {activeOfferIndex === index&&(<Table array={offer.candidates} test={offer.withtest}/>)}
           
           
         </tbody>

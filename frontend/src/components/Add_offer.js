@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useDispatch } from 'react-redux';
-import { add_offer } from '../redux/Action/Offer_act';
+import { add_offer, my_offers } from '../redux/Action/Offer_act';
 
 function Add_offer() {
     const dispatch=useDispatch()
@@ -62,6 +62,7 @@ function Add_offer() {
       verify(question1,time1);verify(question2,time2);verify(question3,time3);verify(question4,time4);verify(question5,time5);verify(question6,time6);verify(question7,time7);verify(question8,time8);verify(question9,time9);verify(question10,time10);
       var data={title,description,place,salary,hours,test,skills,jobtype,withtest}
       dispatch(add_offer(data))
+      dispatch(my_offers())
       handleClose()
     }  
 

@@ -4,7 +4,7 @@ import { get_offers, update_offer } from '../redux/Action/Offer_act'
 import Navbar from './Navbar'
 import './Offer.css'
 import Accordion from 'react-bootstrap/Accordion';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getCurrent } from '../redux/Action/Action'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
@@ -12,6 +12,9 @@ function Offer() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [alert,setAlert]=useState(false)
+    const [title,setTitle]=useState('')
+    const [location,setLocation]=useState('')
+    const [categorie,setCategorie]=useState('')
   useEffect(() => {
     dispatch(getCurrent())
     dispatch(get_offers())
@@ -21,7 +24,7 @@ function Offer() {
   console.log(offers)
   console.log(user)
   return (
-    <div style={{backgroundImage:`url("https://cdn.wallpapersafari.com/9/57/PdJiN3.jpg")`,backgroundRepeat:'no-repeat',backgroundPosition:'center',backgroundSize:'cover'}}>
+    <div style={{backgroundImage:`url("https://cdn.wallpapersafari.com/9/57/PdJiN3.jpg")`,backgroundRepeat:'no-repeat',backgroundPosition:'center',backgroundSize:'cover',minHeight:'100vh'}}>
      <Navbar/>
      
   <div className="container"  >
@@ -40,21 +43,32 @@ function Offer() {
         <div className="career-search mb-60">
           <form action="#" className="career-form mb-60" >
             <div className="row">
-              <div className="col-md-6 col-lg-3 my-3">
+              <div className="col-md-6 col-lg-4 my-3">
                 <div className="input-group position-relative">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Job Title"
+                    placeholder="Search by Job Title"
                     id="keywords"
+                    onChange={(e)=>setTitle(e.target.value)}
                   />
                 </div>
               </div>
-              
-              <div className="col-md-6 col-lg-3 my-3">
+              <div className="col-md-6 col-lg-4 my-3">
+                <div className="input-group position-relative">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search by Location"
+                    id="keywords"
+                    onChange={(e)=>setLocation(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-4 my-3">
                 <div className="select-container">
-                  <select className="form-select">
-                    <option>select the categorie</option>
+                  <select className="form-select" onChange={(e)=>setCategorie(e.target.value)}>
+                    <option value={''}>Search by categorie</option>
                     <hr/>
                     <option>Administration, business and management</option>
                     <option>Computing and ICT</option>
@@ -70,24 +84,14 @@ function Offer() {
                   </select>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-3 my-3">
-                
-              </div>
-              <div className="col-md-6 col-lg-3 my-3">
-                <button
-                  type="button"
-                  className="btn btn-lg btn-block btn-light btn-custom"
-                  id="contact-submit"
-                  style={{backgroundColor:'teal'}}
-                >
-                  Search
-                </button>
-              </div>
             </div>
           </form>
           <div className="filter-result">
             <p className="mb-30 ff-montserrat" style={{color:'white'}}>Total Job Openings : {offers.length}</p>
-            {offers.map((offer)=>
+            {offers.filter((offer)=>offer.title.toLowerCase().includes(title.toLowerCase().trim())&&
+            offer.place.toLowerCase().includes(location.toLowerCase().trim())&&
+            offer.jobtype.toLowerCase().includes(categorie.toLowerCase().trim()))
+            .map((offer)=>
             <div key={offer._id}>
             <span style={{fontSize:'15px',textAlign:'start',background:'#f5f5f5'}}>Created at: {offer.createdAt}</span>
             <div className="col-xxl job-box d-md-flex align-items-center justify-content-between mb-30" style={{background:'#f5f5f5'}}>
@@ -96,11 +100,11 @@ function Offer() {
                 <img className="img-holder" src={offer.userID.image}/>
               </div>
               <div className="col-10 job-content" style={{textAlign:'center'}}>
-                <h4 > {offer.userID.name} is hiring:</h4>
+                <Link to={`/profil/${offer.userID._id}`}> {offer.userID.name} </Link>is hiring:
                 <h2 className="text-center text-md-left" style={{color:'navy'}}>
                 {offer.title}
                 </h2>
-                
+                <span>{offer.jobtype}</span>
                 <ul className="d-md-flex flex-wrap text-capitalize ff-open-sans">
                   <li className="mr-md-4">
                   <i class="bi bi-geo-alt"></i> {offer.place}

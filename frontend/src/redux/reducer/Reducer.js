@@ -1,8 +1,9 @@
-import { GET_CURRENT, GET_MANY, LOG_IN, LOG_OUT, REGISTER } from "../ActionType/ActionType";
+import { GETONE, GET_CURRENT, GET_MANY, LOG_IN, LOG_OUT, REGISTER } from "../ActionType/ActionType";
 
 const initialState = {
 user:{},
-manyusers:[]
+manyusers:[],
+userone:{}
 }
 
 const Reducer= (state = initialState, { type, payload }) => {
@@ -11,13 +12,16 @@ const Reducer= (state = initialState, { type, payload }) => {
     case REGISTER :
     localStorage.setItem("token",payload.token)   
     return {...state, user:payload.user}
-        
+    
     case GET_CURRENT :
         return {...state,user:payload.user}
 
     case GET_MANY :
         return {...state,manyusers:payload.manyusers}    
-        
+     
+    case GETONE:
+        return {...state,userone:payload.oneuser}    
+
     case LOG_OUT:
       localStorage.removeItem("token")
       return {user:{}}

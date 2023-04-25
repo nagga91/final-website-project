@@ -69,3 +69,12 @@ exports.getmanyuser = async (req, res) => {
       res.status(500).send({ msg: "couldn't get many users"});
     }
   }
+
+  exports.getoneuser = async (req, res) => {
+    try {
+      const oneuser = await users.findById(req.params.id);
+      res.status(200).send({ msg: "one offer", oneuser });
+    } catch (error) {
+      res.status(500).send({ msg: "couldn't get user" });
+    }
+  };
