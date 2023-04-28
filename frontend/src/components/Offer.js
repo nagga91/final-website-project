@@ -7,6 +7,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { Link, useNavigate } from 'react-router-dom'
 import { getCurrent } from '../redux/Action/Action'
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Form from 'react-bootstrap/Form';
 
 function Offer() {
     const dispatch=useDispatch()
@@ -146,10 +147,12 @@ function Offer() {
                  <Accordion defaultActiveKey="0">
               <Accordion.Item eventKey="1">
               <Accordion.Header>Show details...</Accordion.Header>
-                <Accordion.Body style={{textAlign:'start'}}>
-              Job description: {offer.description}
+                <Accordion.Body style={{textAlign:'start',width:'400px'}}>
+                Job description:
+                <Form.Control as="textarea" rows={5} value={offer.description} disabled/>
               <hr/>
-              Required skills: {offer.skills} 
+              Required skills:
+              <Form.Control as="textarea" rows={5} cols={8} value={offer.skills} disabled/>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

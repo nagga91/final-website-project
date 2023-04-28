@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCurrent } from '../redux/Action/Action'
 import Navbar from './Navbar'
 import './Profile_emp.css'
-
+import Form from 'react-bootstrap/Form';
 
 function Profile_emp() {
     const dispatch=useDispatch()
@@ -58,38 +58,29 @@ function Profile_emp() {
        <hr style={{color:'white'}}/>
        <div className="contactInfo language">
          <h3 className="title">Languages</h3>
-         <h6 className="text" style={{color:'white'}}>{user.languages}</h6>
+         <Form.Control as="textarea" style={{background:'transparent',border:'none',color:'white'}} rows={3} value={user.languages} disabled/>
        </div>
      </div>
      <div className="right_Side">
-       <div className="about">
-         <h2 className="title2">Education</h2>
-         <div className="box">
-           <div className="text">
-             <h4>{user.education}</h4>
-           </div>
-         </div>
+     <div className="about">
+         <h2 className="title2">Experience</h2>
+         <Form.Control as="textarea" style={{background:'transparent',border:'none'}} rows={8} value={user.experience} disabled/> 
        </div>
        <hr style={{color:'black'}}/>
        <div className="about">
-         <h2 className="title2">Experience</h2>
-         <div className="box">
-           <div className="text">
-             <h4>{user.experience}</h4>
-           </div>
-         </div>
+         <h2 className="title2">Education</h2>
+         <Form.Control as="textarea" style={{background:'transparent',border:'none'}} rows={5} value={user.education} disabled/> 
        </div>
        <hr style={{color:'black'}}/>
        <div className="about skills">
          <h2 className="title2">Professionals skills</h2>
-         <div className="box">
-           <h4>{user.skills}</h4>
-         </div> 
+         <Form.Control as="textarea" style={{background:'transparent',border:'none'}} rows={5} value={user.skills} disabled/>
        </div>
        <hr style={{color:'black'}}/>
        <div className="about interest">
          <h2 className="title2">Interests</h2>
-         {user.interests}
+         <Form.Control as="textarea" style={{background:'transparent',border:'none'}} rows={5} value={user.interests} disabled/>
+         
        </div>
      </div>
    </div>

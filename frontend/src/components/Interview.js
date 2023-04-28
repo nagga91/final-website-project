@@ -70,12 +70,12 @@ const job=useSelector((state)=>state.Offersreducer.offer)
             <div style={{backgroundColor:'white',marginRight:'50px',width:'40%',borderRadius:'15px'}}> 
             <i class="bi bi-puzzle" style={{fontSize:'3rem',color:'blue'}}><br/>
             <span style={{fontSize:'1rem',color:'black'}}>
-            {job.title} test</span></i>
+            {job?.title} test</span></i>
             </div>
             <div style={{backgroundColor:'white',width:'40%',borderRadius:'15px'}}>
           <i class="bi bi-hourglass-split" style={{fontSize:'3rem',color:'blue'}}><br/>
           <span style={{fontSize:'1rem',color:'black'}}>
-            {job.test?.reduce((acc,e)=>acc+e.time,0
+            {job?.test?.reduce((acc,e)=>acc+e.time,0
           )} min</span></i>
           </div>
           </div>
@@ -84,7 +84,7 @@ const job=useSelector((state)=>state.Offersreducer.offer)
         </FullScreen>
         <br/>
      <div>
-     {(job.candidates?.filter(e=>e.candidat===user._id).length>0) ? 
+     {(job?.candidates?.filter(e=>e.candidat===user._id).length>0) ? 
         <button className="btn d-block d-sm-inline-block btn-light" style={{backgroundColor:'teal'}} disabled>Applied <i class="bi bi-check2"></i></button>
         :
         <button onClick={handleStartTest} style={{color:'#fff',backgroundColor:'#065f46',outline:'none',padding: '10px 5px',width: '100px',cursor: 'pointer',border: 'none',borderRadius: '3px',boxShadow: '0 0 1px 1px #e0e0ea'}}>

@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 
-function Table({array,test}) {
+function Table({array,test,questions}) {
   const dispatch=useDispatch()
   const [show, setShow] = useState(Array(array.length).fill(false));
 
@@ -22,6 +22,7 @@ function Table({array,test}) {
     setShow(newShow);
   };
   console.log(array,test)
+  console.log(questions,'ttt')
   var candidates=[]
   array.map((e)=>candidates.push(e.candidat))
   console.log(candidates)
@@ -31,12 +32,13 @@ function Table({array,test}) {
   }, [dispatch])
 
   const searchers= useSelector((state)=>state.Reducer.manyusers)
+  console.log(searchers)
   return (
     <>
     {(test==='with test')?searchers.map((e,index)=>{
-      const person = array.find((el) => el.candidat === e._id);
-      
-      if(person.answers.length>0){
+      const person = array.find((el) => el.candidat === e._id&&el.answers.length>0);
+      console.log(person)
+      if(person?.answers.length>0){
         return(
       <tr className="text-gray-700" key={e._id}>
             <td className="px-4 py-3 border">
@@ -74,7 +76,7 @@ function Table({array,test}) {
 
       <Modal show={show[index]} onHide={() => handleClose(index)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Candidat's answers</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -83,8 +85,11 @@ function Table({array,test}) {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Answer {i+1}</Form.Label>
-              <Form.Control as="textarea" rows={3} value={e} disabled/>
+              Question n{i+1}:
+              <Form.Control as="textarea" rows={5} value={questions[i].question} disabled/>
+              Answer of candidat:
+              <Form.Control as="textarea" rows={5} value={e} disabled/>
+              <hr/>
             </Form.Group>)}
           </Form>
         </Modal.Body>

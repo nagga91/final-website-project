@@ -52,7 +52,8 @@ function Test({test,idoffer,iduser,candidates}) {
     <hr/>
    <div style={{display:'flex',width:'100%'}}>
       <div style={{width:'50%',textAlign:'start',border:'1px solid'}}>
-        Question {currentQuestionIndex + 1}: {currentQuestion.question}
+        Question {currentQuestionIndex + 1}:
+        <Form.Control as="textarea" rows={10} value={currentQuestion.question}/>
       </div>
      <div style={{width:'50%'}}>
       <Form.Control as="textarea" value={answer} placeholder='Write your answer here' rows={10} onChange={(e) => setAnswer(e.target.value)}/>

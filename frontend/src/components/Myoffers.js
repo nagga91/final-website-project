@@ -12,6 +12,7 @@ import Add_offer from './Add_offer';
 import Update_offer from './Update_offer';
 import Table from './Table';
 import Badge from 'react-bootstrap/Badge';
+import Form from 'react-bootstrap/Form';
 
  function Myoffers() {
   const myoffers=useSelector((state)=>state.Offersreducer.myoffers)
@@ -95,11 +96,11 @@ import Badge from 'react-bootstrap/Badge';
         <Col sm={9}>
           <Tab.Content>
             <Tab.Pane eventKey="first" style={{textAlign:'start'}}>
-              <h6>description :</h6>
+              <h6>Job description :</h6>
               <p>{offer.description}</p>
               <hr/>
               <h6>skills required :</h6>
-              <p>{offer.skills}</p>
+              <Form.Control as="textarea" rows={3} value={offer.skills}/>
             </Tab.Pane>
             <Tab.Pane eventKey="second">
             <section className="container mx-auto p-6 font-mono">      
@@ -118,7 +119,7 @@ import Badge from 'react-bootstrap/Badge';
         <tbody className="bg-white" >
          
             
-          {activeOfferIndex === index&&(<Table array={offer.candidates} test={offer.withtest}/>)}
+          {activeOfferIndex === index&&(<Table array={offer.candidates} questions={offer.test} test={offer.withtest}/>)}
           
           
         </tbody>
